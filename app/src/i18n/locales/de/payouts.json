@@ -1,0 +1,31 @@
+{
+  "title": "Auszahlungseinstellungen",
+  "lead": "Prüfen Sie, wohin Ihre Einnahmen fließen und wann sie ankommen. Änderungen gelten ab dem nächsten Auszahlungszyklus.",
+  "tabs": {
+    "aria": "Auszahlungsbereiche",
+    "overview": "Übersicht",
+    "methods": "Zahlungsmethoden",
+    "history": "Auszahlungsverlauf"
+  },
+  "balance": {
+    "label": "Verfügbares Guthaben",
+    "pending": "Pending clearance"
+  },
+  "next": {
+    "label": "Nächste Auszahlung",
+    "on": "am {{date}}"
+  },
+  "recipient": {
+    "heading": "Zahlungsempfängerinformationen",
+    "taxId": "Steueridentifikationsnummer",
+    "account": "Internationale Bankkontonummer",
+    "country": "Land",
+    "countryValue": "Deutschland"
+  },
+  "actions": {
+    "save": "Auszahlungseinstellungen speichern",
+    "export": "CSV exportieren"
+  },
+  "note": "Auszahlungen erfolgen, sobald Ihr Guthaben den Mindestbetrag überschreitet. Banküberweisungen erscheinen in der Regel nach zwei bis drei Werktagen auf Ihrem Kontoauszug.",
+  "ref": "Nr."
+}

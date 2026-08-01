@@ -1,0 +1,6 @@
+[
+  { "id": "artist-01", "name": "Aiko Tanaka", "avatar": "/avatars/avatar-01.svg", "bio": "Digital artist from Tokyo blending traditional Japanese aesthetics with futuristic technology." },
+  { "id": "artist-02", "name": "Marco Bellini", "avatar": "/avatars/avatar-02.svg", "bio": "Street photographer from Milan capturing the poetry of everyday urban life." },
+  { "id": "artist-03", "name": "Zara Okonkwo", "avatar": "/avatars/avatar-03.svg", "bio": "3D artist from Lagos creating surreal architectural landscapes and impossible geometries." },
+  { "id": "artist-04", "name": "Elise Dubois", "avatar": "/avatars/avatar-04.svg", "bio": "Illustrator from Paris specializing in botanical art and whimsical nature scenes." }
+]

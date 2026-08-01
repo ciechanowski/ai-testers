@@ -1,0 +1,15 @@
+{
+  "title": "Creator Studio",
+  "lead": "Your live dashboard: sales, viewers and payouts in real time.",
+  "badge": "Live",
+  "session": "Session",
+  "revenue": "Revenue today",
+  "viewers": "Watching now",
+  "conversion": "Conversion",
+  "topSale": "Top sale today",
+  "payout": "Next payout in",
+  "updated": "updated {{count}}s ago",
+  "clock": "Studio time",
+  "feed": "Live sales",
+  "bought": "bought"
+}

@@ -1,0 +1,12 @@
+{
+  "title": "Recent Activity",
+  "lead": "The latest sales, bids and listings across Pixelarium.",
+  "loading": "Loading activity…",
+  "empty": "No recent activity.",
+  "verb": {
+    "sale": "sold",
+    "bid": "placed a bid on",
+    "listing": "listed",
+    "favorite": "favorited"
+  }
+}

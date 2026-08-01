@@ -1,0 +1,28 @@
+{
+  "heading": "Na żywo",
+  "lead": "Puls sali aukcyjnej Pixelarium w czasie rzeczywistym — oferty, kolekcjonerzy i kondycja systemu, aktualizowane na bieżąco.",
+  "badge": "Na żywo",
+  "topBid": {
+    "label": "Aktualna najwyższa oferta",
+    "lot": "Lot"
+  },
+  "onlineNow": {
+    "label": "Kolekcjonerów online"
+  },
+  "latency": {
+    "label": "Opóźnienie API"
+  },
+  "session": {
+    "label": "Twoja sesja"
+  },
+  "lastUpdated": {
+    "label": "Kanał odświeżony",
+    "value": "{{count}} s temu"
+  },
+  "floorPrice": {
+    "label": "Cena minimalna"
+  },
+  "drop": {
+    "heading": "Najbliższy drop kończy się za"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Creator Studio",
+  "lead": "Dein Live-Dashboard: Verkäufe, Zuschauer und Auszahlungen in Echtzeit.",
+  "badge": "Live",
+  "session": "Sitzung",
+  "revenue": "Umsatz heute",
+  "viewers": "Sehen gerade zu",
+  "conversion": "Conversion",
+  "topSale": "Top-Verkauf heute",
+  "payout": "Nächste Auszahlung in",
+  "updated": "aktualisiert vor {{count}}s",
+  "clock": "Studio-Zeit",
+  "feed": "Live-Verkäufe",
+  "bought": "kaufte"
+}

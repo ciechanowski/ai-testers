@@ -1,0 +1,12 @@
+{
+  "title": "Letzte Aktivität",
+  "lead": "Die neuesten Verkäufe, Gebote und Angebote bei Pixelarium.",
+  "loading": "Aktivität wird geladen…",
+  "empty": "Keine aktuelle Aktivität.",
+  "verb": {
+    "sale": "verkaufte",
+    "bid": "bot auf",
+    "listing": "listete",
+    "favorite": "favorisierte"
+  }
+}

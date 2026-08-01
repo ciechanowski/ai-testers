@@ -1,0 +1,25 @@
+node_modules
+dist
+*.tsbuildinfo
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+# Baseline'y VRT generujesz u siebie (--update-snapshots), nie trzymamy ich w repo
+tests/__screenshots__/
+
+# OS
+.DS_Store
+
+# .claude/ w repo trzyma WYŁĄCZNIE modelowe skille kursu (S03L03).
+# Uwaga: `.claude/` + `!.claude/skills/` NIE działa, bo git nie wchodzi do zignorowanego
+# katalogu, więc negacja w środku jest nieosiągalna. Trzeba odblokować każdy poziom.
+# Allowlista po PEŁNEJ nazwie, nigdy `vrt-*`, bo złapałoby prywatne skille autora.
+.claude/*
+!.claude/skills/
+.claude/skills/*
+!.claude/skills/vrt-factory/
+!.claude/skills/vrt-pom/
+!.claude/skills/vrt-spec/
+!.claude/skills/vrt-i18n/

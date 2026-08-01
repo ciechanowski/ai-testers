@@ -1,0 +1,12 @@
+[
+  { "id": "act-001", "type": "sale", "actorName": "Sarah Johnson", "actorAvatar": "/avatars/avatar-01.svg", "artworkId": "art-001", "artworkTitle": "Neon Horizon" },
+  { "id": "act-002", "type": "bid", "actorName": "Marcus Wei", "actorAvatar": "/avatars/avatar-02.svg", "artworkId": "art-003", "artworkTitle": "Crystal Bloom" },
+  { "id": "act-003", "type": "listing", "actorName": "Aiko Tanaka", "actorAvatar": "/avatars/avatar-03.svg", "artworkId": "art-005", "artworkTitle": "Data Streams" },
+  { "id": "act-004", "type": "favorite", "actorName": "Elena Vasquez", "actorAvatar": "/avatars/avatar-04.svg", "artworkId": "art-007", "artworkTitle": "Floating Islands" },
+  { "id": "act-005", "type": "sale", "actorName": "Tomás Silva", "actorAvatar": "/avatars/avatar-01.svg", "artworkId": "art-011", "artworkTitle": "Glass Cathedral" },
+  { "id": "act-006", "type": "bid", "actorName": "Maya Chen", "actorAvatar": "/avatars/avatar-02.svg", "artworkId": "art-009", "artworkTitle": "Pixel Rain" },
+  { "id": "act-007", "type": "listing", "actorName": "Marco Bellini", "actorAvatar": "/avatars/avatar-03.svg", "artworkId": "art-010", "artworkTitle": "Silent Harbor" },
+  { "id": "act-008", "type": "favorite", "actorName": "Zara Okonkwo", "actorAvatar": "/avatars/avatar-04.svg", "artworkId": "art-008", "artworkTitle": "Midnight Garden" },
+  { "id": "act-009", "type": "sale", "actorName": "Liam Novak", "actorAvatar": "/avatars/avatar-01.svg", "artworkId": "art-012", "artworkTitle": "Fox & Fireflies" },
+  { "id": "act-010", "type": "bid", "actorName": "Priya Nair", "actorAvatar": "/avatars/avatar-02.svg", "artworkId": "art-002", "artworkTitle": "Urban Echoes" }
+]

@@ -1,0 +1,13 @@
+{
+  "title": "Ersteller-Statistiken",
+  "lead": "So haben sich Ihre Werke im ausgewählten Zeitraum geschlagen.",
+  "period": { "label": "Berichtszeitraum", "range": "{{from}} – {{to}}" },
+  "total": { "label": "Gesamtumsatz", "views": "Aufrufe insgesamt" },
+  "summary": "Umsatzübersicht",
+  "summaryText": "{{count}} Kunstwerke haben in diesem Zeitraum Umsatz erwirtschaftet.",
+  "filters": { "aria": "Statistikfilter", "category": "Kategorie", "all": "Alle Kategorien", "range": "Zeitraum", "range30": "Letzte 30 Tage", "range90": "Letzte 90 Tage", "apply": "Filter anwenden" },
+  "chart": { "aria": "Aufrufe pro Kunstwerk", "heading": "Aufrufe nach Kunstwerk" },
+  "table": { "heading": "Leistung nach Kunstwerk", "artwork": "Kunstwerk", "views": "Aufrufe", "favorites": "Favoriten", "revenue": "Umsatz" },
+  "generated": "Erstellt {{time}}",
+  "job": "Auftrag"
+}

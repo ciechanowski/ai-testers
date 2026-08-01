@@ -1,0 +1,8 @@
+[
+  { "id": "ins-001", "artworkId": "art-001", "title": "Neon Horizon", "category": "digital-art", "views": 4820, "favorites": 312, "revenueCents": 9200 },
+  { "id": "ins-002", "artworkId": "art-004", "title": "Chromatic Drift", "category": "3d-render", "views": 3915, "favorites": 268, "revenueCents": 14500 },
+  { "id": "ins-003", "artworkId": "art-002", "title": "Silent Harbour", "category": "photography", "views": 3140, "favorites": 197, "revenueCents": 7800 },
+  { "id": "ins-004", "artworkId": "art-007", "title": "Paper Lanterns", "category": "illustration", "views": 2604, "favorites": 154, "revenueCents": 6300 },
+  { "id": "ins-005", "artworkId": "art-005", "title": "Iron Bloom", "category": "3d-render", "views": 1988, "favorites": 121, "revenueCents": 11900 },
+  { "id": "ins-006", "artworkId": "art-003", "title": "Dust and Gold", "category": "photography", "views": 1476, "favorites": 88, "revenueCents": 5400 }
+]

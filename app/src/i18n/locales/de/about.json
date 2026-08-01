@@ -1,0 +1,38 @@
+{
+  "title": "Über Pixelarium",
+  "story": {
+    "heading": "Unsere Geschichte",
+    "p1": "Pixelarium wurde 2019 als kleine Online-Galerie gegründet und präsentierte aufstrebende digitale Künstler. Heute sind wir ein florierender Marktplatz, der Künstler mit Sammlern weltweit verbindet.",
+    "p2": "Unsere Mission ist es, digitale Kunst zugänglich, auffindbar und sammelbar zu machen. Wir glauben, dass jedes Pixel eine Geschichte erzählt.",
+    "since": "Seit"
+  },
+  "team": {
+    "heading": "Unser Team",
+    "members": [
+      { "name": "Maya Rodriguez", "role": "Gründerin & CEO", "bio": "Kunstkuratorin wurde Tech-Unternehmerin mit Leidenschaft für digitale Kreativität." },
+      { "name": "Liam O'Brien", "role": "Leiter der Kuration", "bio": "Ehemaliger Galeriedirektor mit einem Blick für bahnbrechende digitale Kunst." },
+      { "name": "Yuki Sato", "role": "Leitender Entwickler", "bio": "Full-Stack-Ingenieur, der die Plattform für unser Kunst-Ökosystem baut." },
+      { "name": "Clara Fischer", "role": "Community-Managerin", "bio": "Verbindet Künstler und Sammler durch Veranstaltungen und Ausstellungen." }
+    ]
+  },
+  "contact": {
+    "heading": "Kontakt",
+    "name": "Ihr Name",
+    "email": "Ihre E-Mail",
+    "subject": {
+      "label": "Betreff",
+      "general": "Allgemeine Anfrage",
+      "support": "Technischer Support",
+      "partnership": "Partnerschaft",
+      "press": "Presseanfrage"
+    },
+    "message": "Nachricht",
+    "send": "Nachricht senden"
+  },
+  "stats": {
+    "artists": "Künstler",
+    "artworks": "Kunstwerke",
+    "collectors": "Sammler",
+    "countries": "Länder"
+  }
+}

@@ -1,0 +1,6 @@
+[
+  { "id": "test-01", "author": "Sarah Chen", "avatar": "/avatars/avatar-01.svg", "text": "Pixelarium transformed how I discover digital art. The curation is outstanding and every piece tells a story.", "timestamp": "2026-04-20T08:00:00Z" },
+  { "id": "test-02", "author": "James Wright", "avatar": "/avatars/avatar-02.svg", "text": "I've purchased three pieces from Pixelarium and the quality of both the art and the service exceeded my expectations.", "timestamp": "2026-04-20T06:00:00Z" },
+  { "id": "test-03", "author": "Anna Kowalska", "avatar": "/avatars/avatar-03.svg", "text": "As a collector, I appreciate the diverse range of digital art styles available. From pixel art to 3D renders, it's all here.", "timestamp": "2026-04-19T22:00:00Z" },
+  { "id": "test-04", "author": "Thomas Mueller", "avatar": "/avatars/avatar-04.svg", "text": "The exhibition events are fantastic. I love being part of this growing community of digital art enthusiasts.", "timestamp": "2026-04-19T14:00:00Z" }
+]

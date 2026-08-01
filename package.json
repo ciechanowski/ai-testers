@@ -1,0 +1,22 @@
+{
+  "name": "vrt-workshop",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd app && npm run dev",
+    "build": "cd app && npm run build",
+    "preview": "cd app && npm run preview",
+    "test:vrt": "npx playwright test",
+    "test:vrt:update": "npx playwright test --update-snapshots",
+    "test:vrt:update-changed": "npx playwright test --update-snapshots=changed",
+    "test:vrt:report": "npx playwright show-report",
+    "test:ai": "npx playwright test ai-",
+    "test:ai:demo": "VRT_DEMO=bug npx playwright test ai-",
+    "test:ai-day-1": "npx playwright test \"s01-.*-ai-\"",
+    "test:ai-day-1:demo": "VRT_DEMO=bug npx playwright test \"s01-.*-ai-\""
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0"
+  }
+}

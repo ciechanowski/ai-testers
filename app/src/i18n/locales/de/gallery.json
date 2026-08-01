@@ -1,0 +1,25 @@
+{
+  "title": "Kunstgalerie",
+  "search": "Kunstwerke suchen...",
+  "searchLabel": "Kunstwerke suchen",
+  "sort": {
+    "label": "Kunstwerke sortieren",
+    "newest": "Neueste zuerst",
+    "oldest": "Älteste zuerst",
+    "priceAsc": "Preis: aufsteigend",
+    "priceDesc": "Preis: absteigend"
+  },
+  "categories": {
+    "all": "Alle",
+    "digital-art": "Digitale Kunst",
+    "photography": "Fotografie",
+    "3d-render": "3D-Rendering",
+    "illustration": "Illustration"
+  },
+  "filtersHeading": "Filter",
+  "showing": "Zeige {{from}}-{{to}} von {{total}}",
+  "noResults": "Keine Kunstwerke entsprechen Ihren Kriterien.",
+  "previous": "Zurück",
+  "next": "Weiter",
+  "page": "Seite {{page}}"
+}

@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Odkryj Sztukę Cyfrową",
+    "subtitle": "Wyselekcjonowana kolekcja współczesnych cyfrowych arcydzieł od artystów z całego świata",
+    "cta": "Przeglądaj Galerię"
+  },
+  "featured": {
+    "heading": "Wyróżnione dzieła",
+    "viewAll": "Zobacz wszystkie"
+  },
+  "visitors": {
+    "label": "odwiedzających dziś"
+  },
+  "countdown": {
+    "heading": "Następna Wystawa",
+    "days": "d",
+    "hours": "g",
+    "minutes": "m",
+    "seconds": "s"
+  },
+  "testimonials": {
+    "heading": "Co mówią kolekcjonerzy",
+    "timeAgo": {
+      "hours": "{{count}} godz. temu",
+      "days": "{{count}} dni temu",
+      "minutes": "{{count}} min temu"
+    }
+  }
+}

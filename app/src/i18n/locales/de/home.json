@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "Digitale Kunst entdecken",
+    "subtitle": "Kuratierte Sammlung zeitgenössischer digitaler Meisterwerke von Künstlern aus aller Welt",
+    "cta": "Galerie erkunden"
+  },
+  "featured": {
+    "heading": "Ausgewählte Werke",
+    "viewAll": "Alle anzeigen"
+  },
+  "visitors": {
+    "label": "Besucher heute"
+  },
+  "countdown": {
+    "heading": "Nächste Ausstellung",
+    "days": "T",
+    "hours": "Std",
+    "minutes": "Min",
+    "seconds": "Sek"
+  },
+  "testimonials": {
+    "heading": "Was Sammler sagen",
+    "timeAgo": {
+      "hours": "vor {{count}} Std.",
+      "days": "vor {{count}} Tagen",
+      "minutes": "vor {{count}} Min."
+    }
+  }
+}

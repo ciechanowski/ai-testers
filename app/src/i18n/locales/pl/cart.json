@@ -1,0 +1,38 @@
+{
+  "title": "Koszyk",
+  "empty": {
+    "heading": "Twój koszyk jest pusty",
+    "description": "Odkryj niesamowite dzieła cyfrowe w naszej galerii",
+    "cta": "Przeglądaj Galerię"
+  },
+  "remove": "Usuń",
+  "summary": {
+    "subtotal": "Suma częściowa",
+    "shipping": "Dostawa",
+    "free": "Bezpłatna",
+    "total": "Razem"
+  },
+  "checkout": {
+    "heading": "Zamówienie",
+    "fullName": "Imię i nazwisko",
+    "email": "Adres e-mail",
+    "address": "Adres",
+    "city": "Miasto",
+    "zip": "Kod pocztowy",
+    "country": "Kraj",
+    "selectCountry": "Wybierz kraj",
+    "countries": {
+      "us": "Stany Zjednoczone",
+      "pl": "Polska",
+      "de": "Niemcy",
+      "uk": "Wielka Brytania",
+      "fr": "Francja"
+    },
+    "cardNumber": "Numer karty",
+    "expiry": "Data ważności",
+    "cvv": "CVV",
+    "placeOrder": "Złóż zamówienie"
+  },
+  "lastUpdated": "Ostatnia aktualizacja:",
+  "items": "przedmiotów"
+}

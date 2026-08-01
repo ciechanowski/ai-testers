@@ -1,0 +1,18 @@
+{
+  "title": "Anmelden",
+  "email": "E-Mail-Adresse",
+  "password": "Passwort",
+  "rememberMe": "Angemeldet bleiben",
+  "forgotPassword": "Passwort vergessen?",
+  "signIn": "Anmelden",
+  "noAccount": "Noch kein Konto?",
+  "register": "Registrieren",
+  "social": {
+    "or": "oder weiter mit",
+    "google": "Mit Google anmelden",
+    "github": "Mit GitHub anmelden"
+  },
+  "error": {
+    "invalid": "Ungültige E-Mail oder Passwort. Bitte versuchen Sie es erneut."
+  }
+}

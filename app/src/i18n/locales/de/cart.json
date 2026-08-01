@@ -1,0 +1,38 @@
+{
+  "title": "Warenkorb",
+  "empty": {
+    "heading": "Ihr Warenkorb ist leer",
+    "description": "Entdecken Sie erstaunliche digitale Kunstwerke in unserer Galerie",
+    "cta": "Galerie durchstöbern"
+  },
+  "remove": "Entfernen",
+  "summary": {
+    "subtotal": "Zwischensumme",
+    "shipping": "Versand",
+    "free": "Kostenlos",
+    "total": "Gesamt"
+  },
+  "checkout": {
+    "heading": "Bestellung",
+    "fullName": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "address": "Straße",
+    "city": "Stadt",
+    "zip": "Postleitzahl",
+    "country": "Land",
+    "selectCountry": "Land auswählen",
+    "countries": {
+      "us": "Vereinigte Staaten",
+      "pl": "Polen",
+      "de": "Deutschland",
+      "uk": "Vereinigtes Königreich",
+      "fr": "Frankreich"
+    },
+    "cardNumber": "Kartennummer",
+    "expiry": "Ablaufdatum",
+    "cvv": "CVV",
+    "placeOrder": "Bestellung aufgeben"
+  },
+  "lastUpdated": "Zuletzt aktualisiert:",
+  "items": "Artikel"
+}

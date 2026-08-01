@@ -1,0 +1,31 @@
+{
+  "title": "Ustawienia wypłat",
+  "lead": "Sprawdź, dokąd trafiają Twoje zarobki i kiedy dojdą. Zmiany obowiązują od następnego cyklu wypłat.",
+  "tabs": {
+    "aria": "Sekcje wypłat",
+    "overview": "Przegląd",
+    "methods": "Metody",
+    "history": "Historia"
+  },
+  "balance": {
+    "label": "Dostępne środki",
+    "pending": "Oczekuje na rozliczenie"
+  },
+  "next": {
+    "label": "Następna wypłata",
+    "on": "dnia {{date}}"
+  },
+  "recipient": {
+    "heading": "Dane odbiorcy",
+    "taxId": "NIP",
+    "account": "Numer rachunku",
+    "country": "Kraj",
+    "countryValue": "Niemcy"
+  },
+  "actions": {
+    "save": "Zapisz ustawienia",
+    "export": "Eksportuj CSV"
+  },
+  "note": "Wypłaty wychodzą, gdy saldo przekroczy próg minimalny. Przelew bankowy zwykle pojawia się na wyciągu po dwóch–trzech dniach roboczych.",
+  "ref": "Nr"
+}

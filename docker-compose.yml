@@ -1,0 +1,74 @@
+# Visual Regression Tracker — self-hosted dashboard dla VRT.
+#
+# Wymagania:
+#   - Docker Desktop / Docker Engine 24+
+#   - Docker Compose v2 (dostępne jako `docker compose`)
+#
+# Pierwsze uruchomienie:
+#   docker compose up -d           # detached (w tle)
+#   docker compose logs -f         # śledź logi
+#   docker compose ps              # status containerów
+#
+# Dashboard:  http://localhost:8080
+# API:        http://localhost:4200
+# Domyślne credentiale (zmień po pierwszym logowaniu):
+#   admin@vrt.com / 123456
+#
+# Zatrzymanie:
+#   docker compose down            # stop + usuń containery
+#   docker compose down -v         # + usuń volumes (resetuje DB)
+#
+# Konfiguracja w testach:
+#   patrz vrt.json (w root projektu)
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vrt
+      POSTGRES_PASSWORD: vrt
+      POSTGRES_DB: visualregressiontracker
+    volumes:
+      - vrt-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U vrt']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    # Pinowana wersja (nie :latest) — zgodnie z PLAYWRIGHT_GUIDELINES.md §11.
+    # Aktualne tagi: https://hub.docker.com/r/visualregressiontracker/api/tags
+    image: visualregressiontracker/api:5.2.0
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      VRT_DB_HOST: postgres
+      VRT_DB_PORT: 5432
+      VRT_DB_USERNAME: vrt
+      VRT_DB_PASSWORD: vrt
+      VRT_DB_DATABASE: visualregressiontracker
+      VRT_JWT_SECRET: 'change-me-in-production-32+chars-min'
+      VRT_API_URL: http://localhost:4200
+    ports:
+      - '4200:4200'
+    volumes:
+      - vrt-images:/app/imageStorage
+
+  ui:
+    # Pinowana wersja (nie :latest)
+    image: visualregressiontracker/ui:5.1.2
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      VRT_API_URL: http://localhost:4200
+    ports:
+      - '8080:8080'
+
+volumes:
+  vrt-pg-data:
+  vrt-images:

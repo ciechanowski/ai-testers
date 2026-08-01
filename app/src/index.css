@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-navy dark:text-gray-100 transition-colors duration-200 font-sans;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tightest;
+  }
+
+  code, pre, kbd {
+    @apply font-mono;
+  }
+}
+
+@layer components {
+  .ai-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(-45deg, #667eea, #764ba2, #4A90D9, #6BA8E8, #667eea);
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .hero-gradient-dark {
+    background: linear-gradient(-45deg, #1a1f36, #252b48, #3a2a5c, #2d3a6b, #1a1f36);
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .artwork-card {
+    @apply transition-transform duration-200 ease-in-out;
+  }
+
+  .artwork-card:hover {
+    @apply -translate-y-1 shadow-lg;
+  }
+
+  .artwork-zoom {
+    @apply transition-transform duration-300 ease-in-out;
+  }
+
+  .artwork-zoom:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   VRT DEMO — celowe regresje wizualne włączane URL-em `?vrt=<case>`.
+   Symulują realny „zepsuty CSS", którego ktoś mógłby dorzucić w PR — służą do
+   nauki triage w testach VRT (patrz tests/visual/s01/s01-l0{1,2}-ai-* i s02-l01-ai-*). Bez parametru
+   `?vrt=` nieaktywne, więc normalne działanie aplikacji jest nietknięte.
+   Klasę `vrt-demo--<case>` nakłada Layout (App.tsx) na podstawie query param.
+   ───────────────────────────────────────────────────────────────────────── */
+.vrt-demo--header-logo header[role="banner"] img[alt="AI Testers"] { opacity: 0 !important; }
+.vrt-demo--header-szum header[role="banner"] nav { transform: translateX(0.6px) !important; }
+.vrt-demo--card-design article.artwork-card { border-radius: 0 !important; border-color: #14b8a6 !important; }
+.vrt-demo--card-contrast article.artwork-card h3 { opacity: 0.12 !important; }
+
+/* S02 (Dzień 2) — regresje do momentów AI: Dark Mode Audit i Responsive Diff. */
+/* dark-contrast: przygaszony tekst treści → na ciemnym tle = niski kontrast (WCAG fail). */
+.vrt-demo--dark-contrast main p,
+.vrt-demo--dark-contrast main li { color: #4b5563 !important; }
+/* mobile-overflow: sztywno szeroka pierwsza sekcja → poziomy scroll widoczny na mobile. */
+.vrt-demo--mobile-overflow main section:first-of-type { width: 1200px !important; max-width: none !important; }
+/* sidebar-desktop-gone: panel filtrów /gallery znika TAKŻE na desktopie (bug) — na mobile zniknięcie jest OK (collapse). */
+.vrt-demo--sidebar-desktop-gone [data-testid="gallery-sidebar"] { display: none !important; }

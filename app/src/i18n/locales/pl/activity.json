@@ -1,0 +1,12 @@
+{
+  "title": "Ostatnia aktywność",
+  "lead": "Najnowsze sprzedaże, oferty i nowe prace w Pixelarium.",
+  "loading": "Ładowanie aktywności…",
+  "empty": "Brak ostatniej aktywności.",
+  "verb": {
+    "sale": "sprzedał(a)",
+    "bid": "złożył(a) ofertę na",
+    "listing": "wystawił(a)",
+    "favorite": "polubił(a)"
+  }
+}

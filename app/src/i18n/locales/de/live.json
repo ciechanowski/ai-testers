@@ -1,0 +1,28 @@
+{
+  "heading": "Live-Bereich",
+  "lead": "Echtzeit-Puls des Pixelarium-Auktionsraums — Gebote, Sammler und Systemzustand, live aktualisiert.",
+  "badge": "Live",
+  "topBid": {
+    "label": "Aktuelles Höchstgebot",
+    "lot": "Los"
+  },
+  "onlineNow": {
+    "label": "Sammler online"
+  },
+  "latency": {
+    "label": "API-Latenz"
+  },
+  "session": {
+    "label": "Deine Sitzung"
+  },
+  "lastUpdated": {
+    "label": "Feed aktualisiert",
+    "value": "vor {{count}} s"
+  },
+  "floorPrice": {
+    "label": "Mindestpreis"
+  },
+  "drop": {
+    "heading": "Nächster Drop endet in"
+  }
+}

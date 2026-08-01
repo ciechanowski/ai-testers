@@ -1,0 +1,25 @@
+{
+  "title": "Galeria Sztuki",
+  "search": "Szukaj dzieł...",
+  "searchLabel": "Szukaj dzieł",
+  "sort": {
+    "label": "Sortuj dzieła",
+    "newest": "Od najnowszych",
+    "oldest": "Od najstarszych",
+    "priceAsc": "Cena: rosnąco",
+    "priceDesc": "Cena: malejąco"
+  },
+  "categories": {
+    "all": "Wszystkie",
+    "digital-art": "Sztuka cyfrowa",
+    "photography": "Fotografia",
+    "3d-render": "Render 3D",
+    "illustration": "Ilustracja"
+  },
+  "filtersHeading": "Filtry",
+  "showing": "Wyświetlanie {{from}}-{{to}} z {{total}}",
+  "noResults": "Brak dzieł spełniających kryteria.",
+  "previous": "Poprzednia",
+  "next": "Następna",
+  "page": "Strona {{page}}"
+}

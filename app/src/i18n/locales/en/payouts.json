@@ -1,0 +1,31 @@
+{
+  "title": "Payout settings",
+  "lead": "Review where your earnings go and when they land. Changes apply to the next payout cycle.",
+  "tabs": {
+    "aria": "Payout sections",
+    "overview": "Overview",
+    "methods": "Methods",
+    "history": "History"
+  },
+  "balance": {
+    "label": "Available balance",
+    "pending": "Pending clearance"
+  },
+  "next": {
+    "label": "Next payout",
+    "on": "on {{date}}"
+  },
+  "recipient": {
+    "heading": "Recipient information",
+    "taxId": "Tax ID",
+    "account": "Account number",
+    "country": "Country",
+    "countryValue": "Germany"
+  },
+  "actions": {
+    "save": "Save settings",
+    "export": "Export CSV"
+  },
+  "note": "Payouts are sent once your balance clears the minimum threshold. Bank transfers usually take two to three business days to appear on your statement.",
+  "ref": "Ref"
+}

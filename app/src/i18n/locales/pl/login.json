@@ -1,0 +1,18 @@
+{
+  "title": "Zaloguj się",
+  "email": "Adres e-mail",
+  "password": "Hasło",
+  "rememberMe": "Zapamiętaj mnie",
+  "forgotPassword": "Zapomniałeś hasła?",
+  "signIn": "Zaloguj się",
+  "noAccount": "Nie masz konta?",
+  "register": "Zarejestruj się",
+  "social": {
+    "or": "lub kontynuuj przez",
+    "google": "Zaloguj przez Google",
+    "github": "Zaloguj przez GitHub"
+  },
+  "error": {
+    "invalid": "Nieprawidłowy email lub hasło. Spróbuj ponownie."
+  }
+}

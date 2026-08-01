@@ -1,0 +1,38 @@
+{
+  "title": "O Pixelarium",
+  "story": {
+    "heading": "Nasza historia",
+    "p1": "Założony w 2019 roku, Pixelarium zaczął jako mała galeria online prezentująca wschodzących artystów cyfrowych. Dziś jesteśmy dynamicznym rynkiem łączącym artystów z kolekcjonerami na całym świecie.",
+    "p2": "Naszą misją jest sprawić, by sztuka cyfrowa była dostępna, odkrywalna i kolekcjonerska. Wierzymy, że każdy piksel opowiada historię.",
+    "since": "Od"
+  },
+  "team": {
+    "heading": "Nasz zespół",
+    "members": [
+      { "name": "Maya Rodriguez", "role": "Założycielka i CEO", "bio": "Kuratorka sztuki, która została przedsiębiorcą technologiczną z pasją do cyfrowej kreatywności." },
+      { "name": "Liam O'Brien", "role": "Szef kuratorstwa", "bio": "Były dyrektor galerii z okiem do przełomowej sztuki cyfrowej." },
+      { "name": "Yuki Sato", "role": "Główny programista", "bio": "Full-stack inżynier budujący platformę napędzającą nasz ekosystem sztuki." },
+      { "name": "Clara Fischer", "role": "Menedżer społeczności", "bio": "Łączy artystów i kolekcjonerów poprzez wydarzenia i wystawy." }
+    ]
+  },
+  "contact": {
+    "heading": "Skontaktuj się",
+    "name": "Twoje imię",
+    "email": "Twój email",
+    "subject": {
+      "label": "Temat",
+      "general": "Zapytanie ogólne",
+      "support": "Pomoc techniczna",
+      "partnership": "Współpraca",
+      "press": "Zapytanie prasowe"
+    },
+    "message": "Wiadomość",
+    "send": "Wyślij wiadomość"
+  },
+  "stats": {
+    "artists": "Artystów",
+    "artworks": "Dzieł",
+    "collectors": "Kolekcjonerów",
+    "countries": "Krajów"
+  }
+}

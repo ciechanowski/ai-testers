@@ -1,0 +1,15 @@
+{
+  "title": "Creator Studio",
+  "lead": "Twój panel na żywo: sprzedaż, oglądający i wypłaty w czasie rzeczywistym.",
+  "badge": "Na żywo",
+  "session": "Sesja",
+  "revenue": "Przychód dziś",
+  "viewers": "Ogląda teraz",
+  "conversion": "Konwersja",
+  "topSale": "Top sprzedaż dziś",
+  "payout": "Do wypłaty",
+  "updated": "zaktualizowano {{count}}s temu",
+  "clock": "Czas studia",
+  "feed": "Sprzedaż na żywo",
+  "bought": "kupił(a)"
+}

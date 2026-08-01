@@ -1,0 +1,13 @@
+{
+  "title": "Statystyki twórcy",
+  "lead": "Jak Twoje prace radziły sobie w wybranym okresie.",
+  "period": { "label": "Okres raportowania", "range": "{{from}} – {{to}}" },
+  "total": { "label": "Przychód łącznie", "views": "Wyświetlenia łącznie" },
+  "summary": "Podsumowanie przychodów",
+  "summaryText": "{{count}} prac wygenerowało przychód w tym okresie.",
+  "filters": { "aria": "Filtry statystyk", "category": "Kategoria", "all": "Wszystkie kategorie", "range": "Zakres", "range30": "Ostatnie 30 dni", "range90": "Ostatnie 90 dni", "apply": "Zastosuj filtry" },
+  "chart": { "aria": "Wyświetlenia na pracę", "heading": "Wyświetlenia wg pracy" },
+  "table": { "heading": "Wyniki wg pracy", "artwork": "Praca", "views": "Wyświetlenia", "favorites": "Ulubione", "revenue": "Przychód" },
+  "generated": "Wygenerowano {{time}}",
+  "job": "Zadanie"
+}

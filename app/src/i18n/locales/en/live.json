@@ -1,0 +1,28 @@
+{
+  "heading": "Live Floor",
+  "lead": "Real-time pulse of the Pixelarium auction floor — bids, collectors and system health, all updating live.",
+  "badge": "Live",
+  "topBid": {
+    "label": "Current top bid",
+    "lot": "Lot"
+  },
+  "onlineNow": {
+    "label": "Collectors online"
+  },
+  "latency": {
+    "label": "API latency"
+  },
+  "session": {
+    "label": "Your session"
+  },
+  "lastUpdated": {
+    "label": "Feed updated",
+    "value": "{{count}}s ago"
+  },
+  "floorPrice": {
+    "label": "Floor price"
+  },
+  "drop": {
+    "heading": "Next drop closes in"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "live": "Live",
+    "activity": "Aktivität",
+    "gallery": "Galerie",
+    "about": "Über uns",
+    "login": "Anmelden",
+    "cart": "Warenkorb"
+  },
+  "footer": {
+    "copyright": "Pixelarium. Alle Rechte vorbehalten.",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "contact": "Kontakt"
+  },
+  "language": {
+    "en": "English",
+    "pl": "Polski",
+    "de": "Deutsch"
+  },
+  "darkMode": "Dunkelmodus umschalten",
+  "openMenu": "Menü öffnen",
+  "closeMenu": "Menü schließen"
+}

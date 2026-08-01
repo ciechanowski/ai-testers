@@ -1,0 +1,13 @@
+{
+  "title": "Creator insights",
+  "lead": "How your work performed in the selected period.",
+  "period": { "label": "Reporting period", "range": "{{from}} – {{to}}" },
+  "total": { "label": "Total revenue", "views": "Total views" },
+  "summary": "Revenue overview",
+  "summaryText": "{{count}} artworks generated revenue in this period.",
+  "filters": { "aria": "Insights filters", "category": "Category", "all": "All categories", "range": "Range", "range30": "Last 30 days", "range90": "Last 90 days", "apply": "Apply filters" },
+  "chart": { "aria": "Views per artwork", "heading": "Views by artwork" },
+  "table": { "heading": "Performance by artwork", "artwork": "Artwork", "views": "Views", "favorites": "Favorites", "revenue": "Revenue" },
+  "generated": "Generated {{time}}",
+  "job": "Job"
+}
