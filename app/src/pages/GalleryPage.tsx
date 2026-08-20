@@ -1,12 +1,10 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArtworkCard } from '../components/ui/ArtworkCard';
 import { LoadingSpinner } from '../components/ui/LoadingSpinner';
-import artworksData from '../data/artworks.json';
 import artistsData from '../data/artists.json';
 import type { Artwork, Artist } from '../types/artwork';
 
-const allArtworks = artworksData as Artwork[];
 const artists = artistsData as Artist[];
 const categories = ['all', 'digital-art', 'photography', '3d-render', 'illustration'] as const;
 type SortOption = 'newest' | 'oldest' | 'priceAsc' | 'priceDesc';
@@ -19,9 +17,28 @@ export function GalleryPage() {
   const [sort, setSort] = useState<SortOption>('newest');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [artworks, setArtworks] = useState<Artwork[] | null>(null);
+
+  // Katalog czytamy z /api/artworks, więc page.route() w teście realnie podmienia
+  // dane. Świadomie BEZ fallbacku na bundla: gdyby mock nie wypalił, grid ma być
+  // pusty, a nie po cichu pokazać prawdziwy katalog i zabetonować go w baseline.
+  useEffect(() => {
+    let active = true;
+    fetch('/api/artworks')
+      .then((r) => r.json())
+      .then((data: Artwork[]) => {
+        if (active) setArtworks(data);
+      })
+      .catch(() => {
+        if (active) setArtworks([]);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const filtered = useMemo(() => {
-    let result = allArtworks;
+    let result = artworks ?? [];
     if (category !== 'all') result = result.filter((a) => a.category === category);
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -36,7 +53,7 @@ export function GalleryPage() {
       }
     });
     return result;
-  }, [search, category, sort]);
+  }, [artworks, search, category, sort]);
 
   const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -94,7 +111,7 @@ export function GalleryPage() {
             ))}
           </div>
 
-          {loading ? <LoadingSpinner /> : paginated.length === 0 ? (
+          {loading || artworks === null ? <LoadingSpinner /> : paginated.length === 0 ? (
             <p className="text-center text-gray-500 dark:text-gray-400 py-12">{t('noResults')}</p>
           ) : (
             <>

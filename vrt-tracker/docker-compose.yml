@@ -1,0 +1,97 @@
+# Visual Regression Tracker: panel VRT stawiany u siebie (S04L01).
+#
+# Wymaga Dockera 24+ z Compose v2. Panel: localhost:8082, API: localhost:4200, baza: localhost:5432.
+# Panel celowo NIE na 8080: ReportPortal z S05 zajmuje 8080 i 8081 naraz.
+# Porty przestawisz przez vrt-tracker/.env, patrz .env.example.
+#
+# Logowanie: visual-regression-tracker@example.com / 123456, apiKey DEFAULTUSERAPIKEYTOBECHANGED.
+#
+# Te wartości to stałe w pliku /app/seed.ts wewnątrz obrazu `migration`, nie konfiguracja.
+# Obraz nie czyta zmiennych DEFAULT_USER_*, więc nie da się ich tu podmienić (oficjalny
+# compose trackera je przekazuje, ale w 5.3.0 nikt ich po drugiej stronie nie odbiera).
+# Podejrzysz to poleceniem:
+#   docker run --rm --entrypoint sh visualregressiontracker/migration:5.3.0 -c 'cat /app/seed.ts'
+#
+# Seed zakłada to konto tylko wtedy, gdy w bazie NIE MA aktywnego administratora. Własne
+# konto admina wyłącza więc domyślne na stałe, a `tracker:reset` (czyszczenie wolumenu)
+# przywraca je, bo baza wraca do stanu pustego.
+#
+#   npm run tracker:up / :logs / :down / :reset
+#
+# Wersje pinowane, nigdy :latest (PLAYWRIGHT_GUIDELINES.md §11).
+# Aktualne tagi: https://hub.docker.com/u/visualregressiontracker
+
+name: vrt-tracker
+
+services:
+  postgres:
+    # Ta sama wersja główna co w oficjalnym compose trackera, bo pod nią pisane są migracje.
+    image: postgres:12-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: vrt
+      POSTGRES_PASSWORD: vrt
+      POSTGRES_DB: vrt_db
+    ports:
+      # Zajęty? Ustaw VRT_DB_PORT w vrt-tracker/.env.
+      - '${VRT_DB_PORT:-5432}:5432'
+    volumes:
+      - vrt-pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U vrt -d vrt_db']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # Zakłada schemat bazy i domyślne konto, potem kończy pracę. Exited (0) to stan poprawny.
+  migration:
+    image: visualregressiontracker/migration:5.3.0
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://vrt:vrt@postgres:5432/vrt_db
+      DEFAULT_USER_EMAIL: admin@vrt.com
+      DEFAULT_USER_PASSWORD: '123456'
+      # Klucz startowy do pierwszego biegu, działa tylko lokalnie.
+      DEFAULT_USER_API_KEY: LOCALDEVONLYCHANGEME
+    restart: on-failure
+
+  api:
+    image: visualregressiontracker/api:5.6.1
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migration:
+        condition: service_completed_successfully
+    environment:
+      DATABASE_URL: postgresql://vrt:vrt@postgres:5432/vrt_db
+      APP_FRONTEND_URL: http://localhost:${VRT_UI_PORT:-8082}
+      JWT_SECRET: local-dev-only-change-me
+      JWT_LIFE_TIME: 1d
+      BODY_PARSER_JSON_LIMIT: 5mb
+    ports:
+      # Wewnątrz kontenera API słucha na 3000. Port hosta: VRT_API_PORT.
+      - '${VRT_API_PORT:-4200}:3000'
+    volumes:
+      - vrt-images:/imageUploads
+
+  ui:
+    image: visualregressiontracker/ui:5.5.0
+    restart: unless-stopped
+    depends_on:
+      - api
+    environment:
+      REACT_APP_API_URL: http://localhost:${VRT_API_PORT:-4200}
+      PORT: 8080
+    ports:
+      - '${VRT_UI_PORT:-8082}:8080'
+    volumes:
+      # Ten sam wolumen co w `api`, pod ścieżką serwowaną przez nginx.
+      # Bez tego panel pokazuje puste miniatury.
+      - vrt-images:/usr/share/nginx/html/static/imageUploads
+
+volumes:
+  vrt-pg-data:
+  vrt-images:

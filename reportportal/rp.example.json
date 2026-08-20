@@ -1,0 +1,8 @@
+{
+  "_comment": "Skopiuj ten plik do reportportal/rp.json (kopia jest w .gitignore) i uzupełnij apiKey oraz project. Każdą wartość stąd nadpisze zmienna środowiskowa o tej samej nazwie: RP_ENDPOINT, RP_PROJECT, RP_APIKEY, RP_LAUNCH. Kolejność źródeł opisuje reportportal/README.md.",
+  "_project_hint": "project to nazwa projektu dokładnie taka, jak w panelu. Zweryfikowane na 26.0.3: API adresuje projekt nazwą, warstwy organizacji w tym wydaniu nie ma.",
+  "endpoint": "http://localhost:8080/api/v2",
+  "project": "REPLACE_WITH_PROJECT_NAME",
+  "apiKey": "REPLACE_WITH_API_KEY_FROM_PROFILE",
+  "launch": "AiTesters VRT"
+}

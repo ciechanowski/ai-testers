@@ -14,9 +14,27 @@
     "test:ai": "npx playwright test ai-",
     "test:ai:demo": "VRT_DEMO=bug npx playwright test ai-",
     "test:ai-day-1": "npx playwright test \"s01-.*-ai-\"",
-    "test:ai-day-1:demo": "VRT_DEMO=bug npx playwright test \"s01-.*-ai-\""
+    "test:ai-day-1:demo": "VRT_DEMO=bug npx playwright test \"s01-.*-ai-\"",
+    "test:vrt:tracker": "npx playwright test --config=vrt-tracker/playwright.config.ts",
+    "tracker:up": "docker compose -f vrt-tracker/docker-compose.yml up -d",
+    "tracker:down": "docker compose -f vrt-tracker/docker-compose.yml down",
+    "tracker:logs": "docker compose -f vrt-tracker/docker-compose.yml logs -f",
+    "tracker:reset": "docker compose -f vrt-tracker/docker-compose.yml down -v",
+    "rp:up": "docker compose -f reportportal/docker-compose.yml --profile ml up -d --wait",
+    "rp:up:lite": "docker compose -f reportportal/docker-compose.yml up -d --wait",
+    "rp:down": "docker compose -f reportportal/docker-compose.yml --profile ml down",
+    "rp:logs": "docker compose -f reportportal/docker-compose.yml --profile ml logs -f",
+    "rp:reset": "docker compose -f reportportal/docker-compose.yml --profile ml down -v",
+    "rp:pull": "docker compose -f reportportal/docker-compose.yml --profile ml pull",
+    "rp:seed": "node reportportal/seed.mjs",
+    "rp:seed:demo": "node reportportal/seed-demo.mjs",
+    "test:vrt:rp": "npx playwright test --config=reportportal/playwright.config.ts",
+    "test:vrt:hw": "npx playwright test --config=reportportal/playwright.config.ts s05-l04-homework"
   },
   "devDependencies": {
-    "@playwright/test": "^1.50.0"
+    "@playwright/test": "^1.50.0",
+    "@reportportal/agent-js-playwright": "5.4.2",
+    "@types/node": "^22.10.0",
+    "@visual-regression-tracker/agent-playwright": "^5.3.1"
   }
 }

@@ -31,6 +31,9 @@ Ten plik celowo **wskazuje ścieżkę zamiast importować przez `@`**. Import wc
 - `tests/visual/s0*/`: specki wizualne per sesja kursu
 - `tests/pages/`: Page Objecty
 - `tests/fixtures/`: factory z deterministycznymi danymi
-- `S01/` do `S04/`: per lekcja `PROMPT.md` z promptami AI oraz kod zadań domowych i modelowych rozwiązań
+- `S01/` do `S05/`: per lekcja `PROMPT.md` z promptami AI oraz kod zadań domowych i modelowych rozwiązań
 - `.claude/skills/`: skille VRT z S03L03 (`vrt-spec`, `vrt-pom`, `vrt-factory`, `vrt-i18n`)
-- `docker-compose.yml`, `vrt.json`: Visual Regression Tracker z S04L01
+- `vrt-tracker/`: integracja z Visual Regression Trackerem (S04L01), osobny config Playwrighta
+- `reportportal/`: integracja z ReportPortalem (Dzień 5), osobny config Playwrighta
+
+Specki gadające z trackerem kończą się na `.tracker.spec.ts`, a te raportujące do ReportPortala na `.rp.spec.ts`. Jedne i drugie leżą **poza** `tests/`, bo root config ma `testDir: './tests'`. Dzięki temu `npx playwright test` nigdy ich nie podniesie i nie zrobi czerwonego biegu komuś bez Dockera. Uruchamia je wyłącznie `npm run test:vrt:tracker` i `npm run test:vrt:rp`. Baseline'y testów trackera żyją w jego bazie, nie w repo, więc nie ma tam `toHaveScreenshot` ani plików PNG.

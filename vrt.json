@@ -1,9 +1,0 @@
-{
-  "_comment": "Visual Regression Tracker config — uzupełnij apiKey z dashboardu (localhost:8080 → Settings → API key) i ewentualnie BUILD_ID per CI run via env VRT_CI_BUILD_ID",
-  "apiUrl": "http://localhost:4200",
-  "project": "ait2vrt1-visual",
-  "apiKey": "REPLACE_WITH_API_KEY_FROM_DASHBOARD",
-  "branchName": "main",
-  "enableSoftAssert": false,
-  "ciBuildId": "${VRT_CI_BUILD_ID:-local-${USER:-dev}}"
-}

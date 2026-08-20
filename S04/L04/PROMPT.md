@@ -2,41 +2,29 @@
 
 ## AI Prompty
 
-### Prompt 1 – Generate the plugin manifest
-```
-Generate a .claude-plugin/plugin.json manifest for a Claude Code plugin that
-packages our Visual Regression Testing toolkit.
+Praca domowa Dnia 4 korzysta z dwóch promptów trzymanych w plikach, bo wczytuje je
+`tests/visual/ai/prompts.ts` (`agentsMdDerivePrompt`, `ruleRepairPrompt`).
 
-CONTENTS TO BUNDLE:
-- skills/vrt-spec/SKILL.md      - authors one deterministic *.visual.spec.ts
-- skills/vrt-pom/SKILL.md       - authors one Page Object class
-- skills/vrt-factory/SKILL.md   - generates deterministic factory data
-- skills/vrt-i18n/SKILL.md      - adds the en/pl/de language axis to a spec
+### Prompt 1: pamięć wyprowadzona z kodu, nie podyktowana
 
-CONSTRAINTS:
-- Plugin name must be kebab-case and namespace the skills as /<plugin>:<skill>
-- Explicit semantic version, not a git SHA - the team pins versions
-- Include author, description, license MIT, and keywords for discovery
-- Do NOT invent fields; use only fields from the official plugin manifest schema
+Pełna treść: [`tests/visual/ai/s04/s04-l04-agents-md-derive.md`](../../tests/visual/ai/s04/s04-l04-agents-md-derive.md).
 
-OUTPUT: the plugin.json file plus a one-line comment per field explaining why it is there.
-```
+Agent czyta wyłącznie specki, Page Objecty, factory i config, a `CLAUDE.md`
+oraz `PLAYWRIGHT_GUIDELINES.md` ma zignorować. Z tego wyprowadza `AGENTS.md`,
+w którym każda reguła niesie rozkaz, dowód w postaci `plik:linia` i formę zakazaną
+jako `// NEVER: <linia kodu>`. Najciekawsze są dwie ostatnie sekcje: czego z kodu
+wyprowadzić się nie da i gdzie model zgadywał.
 
-### Prompt 2 – Review the plugin structure
-```
-Review this Claude Code plugin structure and tell me what breaks:
+### Prompt 2: naprawa reguły, która przegrała
 
-vrt-tools/
-  .claude-plugin/
-    plugin.json
-    skills/vrt-spec/SKILL.md
-    hooks.json
-  CLAUDE.md
-  mcp.json
+Pełna treść: [`tests/visual/ai/s04/s04-l04-rule-repair.md`](../../tests/visual/ai/s04/s04-l04-rule-repair.md).
 
-Check specifically:
-- Which files are in the wrong place, and where do they belong?
-- Which file will simply be ignored by Claude Code, and why?
-- What is the correct filename and location for the MCP server config?
-Answer as a corrected file tree plus one line of justification per change.
-```
+Wejściem jest reguła, prompt użytkownika, który ją pokonał, i kod, jaki agent wtedy
+wyprodukował. Przepisana reguła ma zmieścić się w dwóch liniach i odpowiedzieć na
+prośbę zamiast ją ignorować, bo reguła bez odpowiedzi na „ukryj to" przegra z „ukryj to"
+niezależnie od liczby wielkich liter.
+
+### Prompty z lekcji, używane w krokach 2 i 3
+
+Politykę zatwierdzania baseline'ów i klasyfikację różnic z builda bierzesz z lekcji
+S04L03, plik [`S04/L03/PROMPT.md`](../L03/PROMPT.md).

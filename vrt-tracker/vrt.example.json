@@ -1,0 +1,8 @@
+{
+  "_comment": "Skopiuj ten plik do vrt-tracker/vrt.json (kopia jest w .gitignore) i uzupełnij apiKey z panelu. Każdą wartość stąd nadpisze zmienna środowiskowa o tej samej nazwie: VRT_APIURL, VRT_PROJECT, VRT_APIKEY, VRT_BRANCHNAME, VRT_BASELINEBRANCHNAME, VRT_ENABLESOFTASSERT, VRT_CIBUILDID.",
+  "apiUrl": "http://localhost:4200",
+  "project": "AiTesters Gallery",
+  "apiKey": "REPLACE_WITH_API_KEY_FROM_DASHBOARD",
+  "branchName": "main",
+  "enableSoftAssert": false
+}

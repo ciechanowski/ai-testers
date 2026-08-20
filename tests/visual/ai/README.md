@@ -1,11 +1,11 @@
-# AI w testach VRT (S01–S03 – momenty AI)
+# AI w testach VRT (S01-S04: momenty AI)
 
 Lekkie wsparcie AI dla Visual Regression Testing, **bez kosztu API**. Testy to **zwykłe
-testy VRT** — gdy padną, Playwright pokazuje `baseline/actual/diff` w raporcie HTML. Triage
+testy VRT**: gdy padną, Playwright pokazuje `baseline/actual/diff` w raporcie HTML. Triage
 robisz **ręcznie w Cursorze / Claude Pro**: bierzesz prompt, przeciągasz obrazki z raportu,
 dostajesz werdykt JSON. W **L02/L03** test dokłada do raportu (i do **trace viewera**) gotowy
-załącznik **`PROMPT.md`** — prompt z już wstawionym kontekstem; w **L01** otwierasz prompt
-wprost z [`s01/`](s01/). Bez ciężkiej „paczki" na dysku — to (folder + obrazki)
+załącznik **`PROMPT.md`**, czyli prompt z już wstawionym kontekstem; w **L01** otwierasz prompt
+wprost z [`s01/`](s01/). Bez ciężkiej „paczki" na dysku: to (folder + obrazki)
 przyjdzie przyrostowo w kolejnych dniach.
 
 ## Momenty AI (S01)
@@ -20,10 +20,10 @@ przyjdzie przyrostowo w kolejnych dniach.
 | **S02 L01** | Dark Mode Audit | zrzut light + dark | `{ wcag_aa_pass, violations[] }` |
 | **S02 L03** | ARIA Migration | before + after `.aria.yml` | `{ changes[], a11y_improvements[], verdict }` |
 
-## Momenty AI (S03) — kod, nie triage obrazków
+## Momenty AI (S03): kod, nie triage obrazków
 
 S03 to sesja praktyczna: mock/factory, SOLID + Page Object, Agent Skills, threshold. Momenty AI
-dotyczą **kodu i konwencji**, nie porównania pikseli — dlatego prompty otwierasz **wprost z
+dotyczą **kodu i konwencji**, nie porównania pikseli, dlatego prompty otwierasz **wprost z
 [`s03/`](s03/)** w Cursorze (jak L01 w S01), obok realnych testów z [`../s03/`](../s03/). Połowa
 promptów **generuje kod** (factory / Page Object / `SKILL.md`), połowa robi **review** i zwraca JSON.
 
@@ -38,28 +38,50 @@ promptów **generuje kod** (factory / Page Object / `SKILL.md`), połowa robi **
 | **B01** | Threshold Recommender | lista komponentów | `[{ component, threshold?/maxDiffPixels?/…, mask?, justification }]` |
 | **B01** | False Positive Analysis | testy często czerwone + diff % | `[{ test, verdict, recommendation }]` |
 
+## Momenty AI (S04): kontekst agenta i metadane trackera, nie piksele
+
+S04 przestaje pisać testy, a zaczyna konfigurować agenta: tracker, pamięć (`AGENTS.md`), polityka
+zatwierdzania w zespole. Wejściem nie są tu obrazki, tylko **metadane z API trackera** i **własne
+konwencje projektu**, więc prompty otwierasz **wprost z [`s04/`](s04/)** w Cursorze (jak S03). Każdy
+moment ma parę: jeden prompt **generuje artefakt**, drugi robi jego **review**.
+
+Uwaga na jedną rzecz, która przewija się przez całą sesję: model nie widzi pikseli. Trend Analyzer
+czyta wyłącznie `status`, `diffPercent` i `branchName`, więc nie powie Ci, czy różnica to bug czy
+zmiana zamierzona. Od klasyfikacji pojedynczego failu jest AI Triage z bonusu (`bonus-ci-cd`).
+
+| Lekcja | Moment AI | Wejście | Wyjście |
+|--------|-----------|---------|---------|
+| **L01** | Trend Analyzer | zrzut JSON z `GET /builds` + `GET /test-runs` | `{ trending_up[], chronically_flaky[], patterns[], health_score }` |
+| **L01** | Evidence Review | raport trendów + surowy zrzut JSON | `{ unsupported_claims[], pixel_claims[], verdict }` |
+| **L02** | AGENTS.md Generator | konwencje projektu + twarde reguły VRT | `AGENTS.md` (Markdown) |
+| **L02** | Agent Memory Review | `AGENTS.md` + `PLAYWRIGHT_GUIDELINES.md` | `{ line_count, duplicated_rules[], secrets_found[], verdict }` |
+| **L03** | Build Summary | JSON builda + opis Pull Requesta | komentarz do PR: kubełki `expected`/`suspicious`/`stale-baseline`/`broken` |
+| **L03** | Approval Policy | proces zespołu + fakty o trackerze | sekcja „Baseline approval” do `AGENTS.md` |
+| **L03** | Approval Discipline Review | podsumowanie builda albo polityka | `{ approval_recommended[], branch_semantics_errors[], verdict }` |
+
 ## Pliki
 
 | Plik | Rola |
 |------|------|
-| [`s01/`](s01/), [`s02/`](s02/), [`s03/`](s03/) | **Treść promptów** jako pliki `.md` (z `{{context}}`), pogrupowane per sesja – źródło dla testu i do ręcznego użycia |
-| [`prompts.ts`](prompts.ts) | Loader: wczytuje prompt z `s01/`/`s02/`/`s03/` + wstawia kontekst; w L02/L03 test dokłada wynik jako `PROMPT.md` do raportu (w L01 i całym S03 używasz pliku z folderu wprost) |
+| [`s01/`](s01/), [`s02/`](s02/), [`s03/`](s03/), [`s04/`](s04/) | **Treść promptów** jako pliki `.md` (z `{{context}}`), pogrupowane per sesja, źródło dla testu i do ręcznego użycia |
+| [`prompts.ts`](prompts.ts) | Loader: wczytuje prompt z `s01/`…`s04/` + wstawia kontekst; w L02/L03 test dokłada wynik jako `PROMPT.md` do raportu (w L01 oraz w całym S03 i S04 używasz pliku z folderu wprost) |
 | [`demo-url.ts`](demo-url.ts) | Buduje URL z regresją demo (`?vrt=<case>`) na podstawie `VRT_DEMO` |
-| [`SOLUTION.md`](SOLUTION.md) | **Klucz odpowiedzi** — poprawny werdykt dla każdego scenariusza + gdzie AI się myli |
-| [`../s01/s01-l01-ai-snapshot-triage.visual.spec.ts`](../s01/s01-l01-ai-snapshot-triage.visual.spec.ts) | L01 – Triage: realny `toHaveScreenshot` (header) |
-| [`../s01/s01-l02-ai-snapshot-explainer.visual.spec.ts`](../s01/s01-l02-ai-snapshot-explainer.visual.spec.ts) | L02 – Explainer: realny `toHaveScreenshot` (karta) |
-| [`../s01/s01-l03-ai-mask-and-flake.visual.spec.ts`](../s01/s01-l03-ai-mask-and-flake.visual.spec.ts) | L03 – HTML Analyzer + prawdziwy Flake (załączniki w raporcie) |
-| [`../s02/s02-l01-ai-gallery-responsive.visual.spec.ts`](../s02/s02-l01-ai-gallery-responsive.visual.spec.ts) | S02 L01 – Responsive Diff (/gallery, per projekt + PROMPT.md) |
-| [`../s02/s02-l01-ai-responsive-darkmode.visual.spec.ts`](../s02/s02-l01-ai-responsive-darkmode.visual.spec.ts) | S02 L01 – Dark Mode Audit (light vs dark + PROMPT.md) |
-| [`../s02/s02-l03-ai-aria-migration.visual.spec.ts`](../s02/s02-l03-ai-aria-migration.visual.spec.ts) | S02 L03 – ARIA Migration (before/after .aria.yml + PROMPT.md) |
-| [`../s03/s03-l01-mocking.visual.spec.ts`](../s03/s03-l01-mocking.visual.spec.ts) | S03 L01 – realny test na mocku + factory (cel promptów Factory Generator / Determinism Review) |
-| [`../s03/s03-l02-page-object.visual.spec.ts`](../s03/s03-l02-page-object.visual.spec.ts) | S03 L02 – VRT przez Page Object (cel promptów POM Refactor / SOLID Review) |
-| [`../s03/s03-b01-threshold.visual.spec.ts`](../s03/s03-b01-threshold.visual.spec.ts) | S03 B01 – threshold per komponent (cel promptów Threshold Recommender / False Positive) |
-| [`../../../.claude/skills/vrt-factory/SKILL.md`](../../../.claude/skills/vrt-factory/SKILL.md) | S03 L03 – modelowy skill: **dane** (cel promptów Skill Draft / Trigger Review) |
-| [`../../../.claude/skills/vrt-pom/SKILL.md`](../../../.claude/skills/vrt-pom/SKILL.md) | S03 L03 – modelowy skill: **Page Object** (locatory + akcje, zero asercji) |
-| [`../../../.claude/skills/vrt-spec/SKILL.md`](../../../.claude/skills/vrt-spec/SKILL.md) | S03 L03 – modelowy skill: **spec** (asercje + screenshot) |
-| [`../../../.claude/skills/vrt-i18n/SKILL.md`](../../../.claude/skills/vrt-i18n/SKILL.md) | S03 L03 – modelowy skill: **oś języków** en/pl/de; wzór dla zadania S03L04 |
-| [`../s03/s03-l03-i18n.visual.spec.ts`](../s03/s03-l03-i18n.visual.spec.ts) | S03 L03 – output skilla `vrt-i18n` (jedna strona × trzy języki) |
+| [`SOLUTION.md`](SOLUTION.md) | **Klucz odpowiedzi**: poprawny werdykt dla każdego scenariusza + gdzie AI się myli |
+| [`../s01/s01-l01-ai-snapshot-triage.visual.spec.ts`](../s01/s01-l01-ai-snapshot-triage.visual.spec.ts) | L01 Triage: realny `toHaveScreenshot` (header) |
+| [`../s01/s01-l02-ai-snapshot-explainer.visual.spec.ts`](../s01/s01-l02-ai-snapshot-explainer.visual.spec.ts) | L02 Explainer: realny `toHaveScreenshot` (karta) |
+| [`../s01/s01-l03-ai-mask-and-flake.visual.spec.ts`](../s01/s01-l03-ai-mask-and-flake.visual.spec.ts) | L03 HTML Analyzer + prawdziwy Flake (załączniki w raporcie) |
+| [`../s02/s02-l01-ai-gallery-responsive.visual.spec.ts`](../s02/s02-l01-ai-gallery-responsive.visual.spec.ts) | S02 L01 Responsive Diff (/gallery, per projekt + PROMPT.md) |
+| [`../s02/s02-l01-ai-responsive-darkmode.visual.spec.ts`](../s02/s02-l01-ai-responsive-darkmode.visual.spec.ts) | S02 L01 Dark Mode Audit (light vs dark + PROMPT.md) |
+| [`../s02/s02-l03-ai-aria-migration.visual.spec.ts`](../s02/s02-l03-ai-aria-migration.visual.spec.ts) | S02 L03 ARIA Migration (before/after .aria.yml + PROMPT.md) |
+| [`../s03/s03-l01-mocking.visual.spec.ts`](../s03/s03-l01-mocking.visual.spec.ts) | S03 L01 realny test na mocku + factory (cel promptów Factory Generator / Determinism Review) |
+| [`../s03/s03-l02-page-object.visual.spec.ts`](../s03/s03-l02-page-object.visual.spec.ts) | S03 L02 VRT przez Page Object (cel promptów POM Refactor / SOLID Review) |
+| [`../s03/s03-b01-threshold.visual.spec.ts`](../s03/s03-b01-threshold.visual.spec.ts) | S03 B01 threshold per komponent (cel promptów Threshold Recommender / False Positive) |
+| [`../../../.claude/skills/vrt-factory/SKILL.md`](../../../.claude/skills/vrt-factory/SKILL.md) | S03 L03 modelowy skill: **dane** (cel promptów Skill Draft / Trigger Review) |
+| [`../../../.claude/skills/vrt-pom/SKILL.md`](../../../.claude/skills/vrt-pom/SKILL.md) | S03 L03 modelowy skill: **Page Object** (locatory + akcje, zero asercji) |
+| [`../../../.claude/skills/vrt-spec/SKILL.md`](../../../.claude/skills/vrt-spec/SKILL.md) | S03 L03 modelowy skill: **spec** (asercje + screenshot) |
+| [`../../../.claude/skills/vrt-i18n/SKILL.md`](../../../.claude/skills/vrt-i18n/SKILL.md) | S03 L03 modelowy skill: **oś języków** en/pl/de; wzór dla zadania S03L04 |
+| [`../s03/s03-l03-i18n.visual.spec.ts`](../s03/s03-l03-i18n.visual.spec.ts) | S03 L03 output skilla `vrt-i18n` (jedna strona × trzy języki) |
+| [`../../../vrt-tracker/`](../../../vrt-tracker/) | S04 L01, integracja z Visual Regression Trackerem: `docker compose`, agent Playwright, osobny config. Źródło zrzutu JSON dla promptów Trend Analyzer i Build Summary |
 
 ## Uruchomienie
 
@@ -73,20 +95,25 @@ npm run test:vrt:report          # raport HTML: baseline / actual / diff (+ live
 #   VRT_DEMO=design|bug npx playwright test s01-l02-ai   # /gallery?vrt=card-design | card-contrast
 ```
 
+> **S03 i S04 nie mają własnego `npm run`.** To prompty na kodzie i na metadanych, nie testy
+> z obrazkami, więc nie ma czego uruchamiać. Otwierasz plik z [`s03/`](s03/) albo [`s04/`](s04/)
+> w Cursorze lub Claude Code i wklejasz kontekst. Zrzut JSON dla promptów S04 L01 i L03 bierzesz
+> z API trackera, patrz [`vrt-tracker/README.md`](../../../vrt-tracker/README.md).
+
 ### Triage ręczny (zero kosztu API)
 
 1. `npm run test:ai:demo` → test czerwony → `npm run test:vrt:report`.
 2. W raporcie (i w trace viewerze) masz **baseline / actual / diff** (L01/L02) albo `live-board.html`
-   (L03). W **L02/L03** jest też **załącznik `PROMPT.md`** — prompt z już wstawionym kontekstem
+   (L03). W **L02/L03** jest też **załącznik `PROMPT.md`**, czyli prompt z już wstawionym kontekstem
    per scenariusz; w **L01** bierzesz prompt wprost z [`s01/`](s01/).
 3. Otwórz prompt (`PROMPT.md` w L02/L03 albo plik z `s01/` w L01) w Cursorze i przeciągnij obrazki z raportu.
 4. Werdykt JSON → porównaj z [`SOLUTION.md`](SOLUTION.md).
 
 ### Mechanizm demo: regresja w aplikacji włączana URL-em
 
-Regresje NIE są wstrzykiwane przez test — **mieszkają w aplikacji** ([`app/src/index.css`](../../../app/src/index.css),
+Regresje NIE są wstrzykiwane przez test, bo **mieszkają w aplikacji** ([`app/src/index.css`](../../../app/src/index.css),
 blok „VRT DEMO") i włączają się parametrem `?vrt=<case>`, który czyta `Layout`
-([`app/src/App.tsx`](../../../app/src/App.tsx)). Test po prostu wchodzi na taki URL — jak ktoś,
+([`app/src/App.tsx`](../../../app/src/App.tsx)). Test po prostu wchodzi na taki URL, jak ktoś,
 kto otworzył stronę po zepsutym PR. Bez `?vrt=` aplikacja działa normalnie.
 
 | `?vrt=` | Co psuje | Używa |
@@ -111,19 +138,19 @@ To dokładnie cykl prawdziwego PR-a. Regresję do demo włącza URL `?vrt=<case>
 `--update-snapshots` z ustawionym `VRT_DEMO`.
 
 > **Masz to na żywo:** testy funkcjonalne (`first-vrt`/`basics`/`stabilization`) są czerwone,
-> bo baseline pochodzą z innej maszyny (font/AA ~2%) – realny „diff czeka na decyzję”:
+> bo baseline pochodzą z innej maszyny (font/AA ~2%), a realny „diff czeka na decyzję”:
 > triage → to szum cross-platform → `--update-snapshots`.
 
-**L03 jest inne** – HTML Analyzer i Flake Root-Cause to narzędzia **diagnostyczne** (zielone):
+**L03 jest inne**: HTML Analyzer i Flake Root-Cause to narzędzia **diagnostyczne** (zielone):
 HTML Analyzer asercjuje, że strona `/live` ma dynamiczne elementy; Flake odtwarza przeciek
 (`baseline ≠ actual`) i wrzuca baseline/actual/live-board.html do raportu.
 
 ## „Realny sens” (L03)
 
-Lekcja używa dedykowanej strony **`/live` („Live Floor")** – dashboardu z **kilkoma** dynamicznymi
+Lekcja używa dedykowanej strony **`/live` („Live Floor")**, dashboardu z **kilkoma** dynamicznymi
 elementami naraz, żeby prompt o maski miał realny materiał i kilka decyzji do podjęcia:
 
-- **HTML Analyzer** dostaje prawdziwy HTML `/live` – zawiera losowe (`bid-ticker`, `online-now`,
+- **HTML Analyzer** dostaje prawdziwy HTML `/live`, zawiera losowe (`bid-ticker`, `online-now`,
   `server-latency`, `session-id`, `live-counter` → `Math.random`), czasowe (`countdown-timer`,
   `last-updated` → `Date.now`, zamraża je `clock`) i animację (`live-pulse` → `animate-ping`,
   wyłącza config). Sugestie maski są weryfikowalne, a pułapki (czas/animacja) testują, czy AI
@@ -134,8 +161,8 @@ elementami naraz, żeby prompt o maski miał realny materiał i kilka decyzji do
 
 ## Caveats (z S01 README → „AI Caveats”)
 
-- **Subscription vs API** – Claude Pro / Cursor wystarcza do **manual triage**;
+- **Subscription vs API**: Claude Pro / Cursor wystarcza do **manual triage**;
   API key potrzebny dopiero do **AI-in-CI** (poza zakresem S01).
-- **Niedeterminizm LLM** – traktuj werdykt jako sugestię; w CI asercjuj **strukturę** JSON,
-  nie konkretną etykietę. AI bywa pewne i błędne — patrz `SOLUTION.md`.
-- **Prywatność** – zrzuty mogą zawierać PII. Maskuj (`mask: [locator]`) zanim wyślesz do AI.
+- **Niedeterminizm LLM**: traktuj werdykt jako sugestię; w CI asercjuj **strukturę** JSON,
+  nie konkretną etykietę. AI bywa pewne i błędne, patrz `SOLUTION.md`.
+- **Prywatność**: zrzuty mogą zawierać PII. Maskuj (`mask: [locator]`) zanim wyślesz do AI.

@@ -9,6 +9,22 @@ blob-report/
 # Baseline'y VRT generujesz u siebie (--update-snapshots), nie trzymamy ich w repo
 tests/__screenshots__/
 
+# S04L01 - lokalna konfiguracja agenta Visual Regression Tracker (zawiera apiKey!).
+# Szablon vrt.example.json zostaje w repo i NIE pasuje do tych wzorcow.
+vrt-tracker/.env
+vrt-tracker/vrt.json
+
+# S05L01 - lokalna konfiguracja agenta ReportPortal (zawiera apiKey!).
+# Szablony rp.example.json i .env.example zostaja w repo i NIE pasuja do tych wzorcow.
+reportportal/.env
+reportportal/rp.json
+
+# Baseline'y specek ReportPortala - jak tests/__screenshots__/, generujesz u siebie
+reportportal/__screenshots__/
+
+# S05L03 - konfiguracja MCP servera ReportPortala trzyma token w polu env.
+.mcp.json
+
 # OS
 .DS_Store
 
