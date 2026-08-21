@@ -2,27 +2,68 @@
 
 ## AI Prompty
 
-### Prompt 1 – Mock data factory
+Ciała promptów są po angielsku (konwencja kursu od Dnia 2), otoczka i omówienie po polsku.
+Prompty chodzą parą i w tej kolejności: pierwszy generuje factory, drugi jej nie ufa.
+
+### Generowanie mock data
+
+Użyj, gdy potrzebujesz szybko wygenerować typowany, deterministyczny fixture do mockowania API w teście VRT.
+Prompt narzuca konwencję z repo: `interface` na kształt, stała tablica bazowa i `slice(count)`,
+dzięki czemu to samo wywołanie zwraca co do bajta te same dane.
+
 ```
-Generate deterministic mock data for the GET /api/artworks endpoint.
-Requirements:
-- 6 artworks, hardcoded UUIDs (uuid v4 format, but fixed)
-- 3 categories: Digital, Photography, Animation
-- Prices: 150, 280, 420, 1200, 3500, 8900
-- Dates: ISO 8601 (2026-01-15)
-- featured: 3 of 6 true
-- TypeScript: interface Artwork + factory function
-Every factory() call returns identical data.
+Task: Factory Generator (S03 L01)
+Generate a deterministic TypeScript factory to feed a mocked API in a VRT test. The factory
+freezes the data so toHaveScreenshot() compares pixels, not yesterday's records.
+[here you describe the data: how many items, which categories, what price range]
+
+Deliver an interface plus a factory function that returns an array of those objects, following the
+repo's factory convention: an interface for the shape, a fixed base array of ready objects, and
+slice(count) to return the first N. (tests/fixtures/artwork.factory.ts is an existing example of
+that convention, for a new entity, keep the same shape, don't copy its data.)
+
+Non-negotiable rules
+- Every value hardcoded. No Math.random(), no crypto.randomUUID(), no Date.now(), no
+  bare new Date(). IDs in a readable sequence (art-001, artist-01), dates as fixed ISO 8601
+  strings, prices as integers (cents).
+- TypeScript, zero any. The interface describes the shape; the factory returns T[].
+- A fixed base array + slice(count) so the same call returns byte-identical data every run.
+
+Return the interface + factory as a single TypeScript code block. After it, in one line, say how
+to prove determinism: call the factory 3× and compare with toEqual.
 ```
 
-### Prompt 2 – Determinism verification
+### Weryfikacja determinizmu
+
+Użyj, gdy chcesz, żeby model zrobił code review gotowej factory pod kątem ukrytej randomizacji
+i zaproponował test. To ten prompt, a nie poprzedni, decyduje o tym, czy fixture wejdzie do repo.
+
 ```
-I have a TypeScript factory function `createArtworks()`.
-Check whether it is truly deterministic:
-- Does it use Math.random() / Date.now() / crypto.randomUUID()?
-- Are all IDs, dates and prices hardcoded?
-- Is the order of array elements stable?
-If you find a source of non-determinism, show how to fix it.
+Task: Determinism Review (S03 L01)
+You are reviewing a TypeScript factory function used to mock an API in a VRT test. Paste the
+factory (or drag the file) into the chat. A single non-deterministic value silently breaks the
+baseline on the next run, so audit it line by line.
+
+Hunt for hidden randomization or time dependence: Math.random(), crypto.randomUUID(),
+Date.now(), bare new Date() (no fixed argument), faker with a live seed, incrementing
+counters kept in module scope. Confirm all IDs, dates and prices are hardcoded.
+
+Return only this JSON:
+
+{
+  "deterministic": true,
+  "violations": [
+    {
+      "location": "<field or line, e.g. createdAt>",
+      "call": "<the offending call, e.g. new Date()>",
+      "fix": "<hardcoded replacement, e.g. '2026-01-15T00:00:00.000Z'>"
+    }
+  ],
+  "unit_test": "<one-line: call the factory 3× and expect(a).toEqual(b).toEqual(c)>"
+}
+
+- deterministic: true only when violations is empty, the same call returns byte-identical data.
+- Prefer a fixed replacement over a mask: mock data should be frozen at the source, not hidden.
 ```
 
-> **Zapowiedź (S04/L02):** te twarde reguły – żadnego `Math.random()`, `Date.now()`, `new Date()` ani `crypto.randomUUID()` w factory – to idealny kandydat do `AGENTS.md` / `CLAUDE.md`. Zapisane raz w pamięci agenta, model stosuje je automatycznie przy każdym generowaniu factory, bez powtarzania w prompcie. Pełne omówienie w S04/L02.
+**Granica:** wygenerowaną factory ZAWSZE przepuść przez code review pod kątem ukrytej randomizacji: szukaj `Math.random()`, `Date.now()`, `new Date()` i `crypto.randomUUID()`. Model bywa pewny siebie i błędny zarazem: potrafi zapewnić, że dane są na sztywno, a mimo to zostawić jedno wywołanie generujące wartość zmienną w czasie, które rozjedzie baseline przy następnym uruchomieniu. Finalnie poprawność zatwierdza człowiek, najlepiej wsparty testem `3× wywołanie === toEqual`.

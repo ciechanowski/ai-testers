@@ -1,18 +1,41 @@
 # S02L02: prompty AI
 
-## Workflow: agent generuje szkielet
+## AI Prompty
 
-Prompt (po angielsku – krócej, taniej w tokenach):
+Ciała promptów są po angielsku (konwencja kursu od Dnia 2), otoczka i omówienie po polsku.
+Lekcja idzie dwoma promptami pod rząd: pierwszy daje szkielet, drugi dokłada determinizm.
+
+### Krok 1: szkielet testu z żywego drzewa dostępności
+
+Z podłączonym serwerem `@playwright/mcp` prosisz agenta, żeby znawigował na stronę,
+zrobił accessibility snapshot i napisał test VRT oparty na rolach z drzewa, nie na CSS:
 
 ```
-Open /about on http://localhost:5173, take an accessibility snapshot of the main landmark,
-then write a Playwright VRT test that screenshots getByRole('main') and adds a
-toMatchAriaSnapshot. Use role-based locators from the snapshot, not CSS.
+Open /about on http://localhost:5173, take an
+accessibility snapshot of the main landmark,
+then write a Playwright VRT test that screenshots
+getByRole('main').
+Use role-based locators from the snapshot, not CSS.
 ```
 
-Co robi agent (narzędzia MCP):
+### Krok 2: dostrojenie szkieletu do determinizmu
 
-1. `browser_navigate` → `/about`
-2. `browser_snapshot` → drzewo ról (`main › heading "About" › section "Statistics" › …`)
-3. `browser_generate_locator` → `getByRole('main')` (lokator z realnego drzewa, nie z CSS)
-4. pisze szkielet: `toHaveScreenshot()` + `toMatchAriaSnapshot()`
+Szkielet z kroku pierwszego jest zielony, ale niestabilny: liczniki i zegar rozjadą baseline
+przy drugim przebiegu. Zamiast poprawiać kod ręcznie, dokładasz do tej samej rozmowy
+drugi prompt, wprost wymieniając trzy techniki z lekcji.
+
+```
+Open /about on http://localhost:5173, take an
+accessibility snapshot of the main landmark,
+then write a Playwright VRT test that screenshots
+getByRole('main'). Use role-based locators, not CSS.
+
+// nowe: wymuś determinizm
+- page.clock.setFixedTime(...) BEFORE goto
+- mask the animated "Statistics" counter (+ maskColor)
+- set a sensible threshold
+```
+
+Rewizję i tak robisz sam: sprawdzasz, czy `page.clock` stoi przed `goto`, czy maska ma
+`maskColor`, i czy `threshold` pasuje do komponentu. MCP daje szkielet, odpowiedzialność
+za determinizm zostaje po Twojej stronie.

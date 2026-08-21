@@ -183,41 +183,6 @@ rozsądnie na maskach / progach / Page Objectach. Dobry `description` = czasowni
 > **Gdzie AI się myli:** zbyt szeroki `description` (skill odpala się „przy wszystkim") i
 > skill-moloch łamiący SRP (dane + asercje + PO w jednym). Trigger konkretny jak nazwa testu.
 
-## S03 B01: Threshold Recommender + False Positive (bonus)
-
-**Threshold Recommender, ground truth** (spójne z tabelą referencyjną z bonusu; preferuj `maxDiffPixels`):
-
-| Komponent | Poprawna tolerancja | Dlaczego |
-|---|---|---|
-| Nav / topbar (statyczny) | `maxDiffPixels: 50` | mały, full-width; `threshold:0` wymagałby Dockera |
-| Hero (gradient + tekst) | `threshold: 0.1` | toleruje subpiksel, łapie shift koloru; 0.15 za luźno |
-| Formularz / komórka tabeli | `maxDiffPixels: 30` | mały, tekst-heavy; próg bezwzględny łatwiej obronić |
-| Galeria / grid obrazów | `threshold: 0.15` + `maxDiffPixelRatio: 0.02` | szum JPEG OK, ale max 2% pikseli |
-| Stopka (statyczna) | `maxDiffPixels: 20` | mały statyczny blok |
-| Brand / logo | `threshold: 0.0` **tylko z Dockerem**, inaczej `maxDiffPixels: 10` | ideał wymaga determinizmu cross-OS |
-| Element zmienny strukturalnie (timestamp, licznik, id) | **`mask`**, nie threshold | żaden próg tego sensownie nie pokryje |
-
-**False Positive, ground truth:** zdiagnozuj root cause, **zanim** ruszysz liczbę.
-
-| Sytuacja | Poprawny werdykt | Rekomendacja |
-|---|---|---|
-| realna regresja złapana przez test | `app_bug` | `fix_application` (nie uciszaj) |
-| szum kosmetyczny (AA / JPEG) poniżej progu | `threshold_too_low` | `raise_threshold` (mały, z komentarzem, review) |
-| element zmienny strukturalnie (timestamp/licznik) | `missing_mask` | `add_mask` (+ niski próg dla reszty) |
-
-> **Gdzie AI się myli:** proponuje **pełzający threshold**: podbicie liczby zamiast diagnozy
-> (maska? stabilizacja z S01? mock z L01?). I nie zna realnego designu ani szumu Twojego CI:
-> jego wartości to baza, finalne ustalasz po pierwszym tygodniu runów (zmierz realny szum).
-
----
-
-# S04: Dzień 4 (ground truth)
-
-S04 to momenty **na konfiguracji agenta i na metadanych trackera**, nie na obrazkach. Generatory
-produkują artefakty, które lądują w repo (`AGENTS.md`, `SKILL.md`, sekcja polityki), a prompty review
-sprawdzają je zanim ktokolwiek je zacommituje. Jedno założenie przewija się przez całą sesję: **model
-nie widzi pikseli**, czyta wyłącznie `status`, `diffPercent`, `branchName` i timestampy.
-
 ## S04 L01: Trend Analyzer + Evidence Review
 
 **Trend Analyzer, poprawny kształt wyjścia:** JSON z `trending_up[]`, `chronically_flaky[]`,

@@ -44,12 +44,6 @@ export const skillDraftPrompt = (): string => load('s03/s03-l03-skill-draft');
 
 export const triggerReviewPrompt = (): string => load('s03/s03-l03-trigger-review');
 
-export const thresholdSuggestPrompt = (context: string): string =>
-  withContext('s03/bonus/s03-b01-threshold-suggest', context);
-
-export const falsePositivePrompt = (context: string): string =>
-  withContext('s03/bonus/s03-b01-false-positive', context);
-
 // S04, kontekst agenta i metadane trackera zamiast pikseli: prompty otwierasz wprost
 // z s04/ w Cursorze (jak S03). Sesja nie ma własnych specek, bo jej efektem pracy jest
 // AGENTS.md z polityką zatwierdzania, więc te eksporty są spisem katalogu, nie zależnością testu.

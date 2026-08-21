@@ -35,8 +35,6 @@ promptów **generuje kod** (factory / Page Object / `SKILL.md`), połowa robi **
 | **L02** | SOLID Review | Page Object + spec | `{ violations[], assertions_leaked, verdict }` |
 | **L03** | Agent Skill Draft | powtarzane prompty + konwencje | `SKILL.md` (frontmatter + body) |
 | **L03** | Skill Trigger Review | `description` z frontmattera | `{ specific_enough, would_misfire_on[], improved_description }` |
-| **B01** | Threshold Recommender | lista komponentów | `[{ component, threshold?/maxDiffPixels?/…, mask?, justification }]` |
-| **B01** | False Positive Analysis | testy często czerwone + diff % | `[{ test, verdict, recommendation }]` |
 
 ## Momenty AI (S04): kontekst agenta i metadane trackera, nie piksele
 
@@ -75,7 +73,6 @@ zmiana zamierzona. Od klasyfikacji pojedynczego failu jest AI Triage z bonusu (`
 | [`../s02/s02-l03-ai-aria-migration.visual.spec.ts`](../s02/s02-l03-ai-aria-migration.visual.spec.ts) | S02 L03 ARIA Migration (before/after .aria.yml + PROMPT.md) |
 | [`../s03/s03-l01-mocking.visual.spec.ts`](../s03/s03-l01-mocking.visual.spec.ts) | S03 L01 realny test na mocku + factory (cel promptów Factory Generator / Determinism Review) |
 | [`../s03/s03-l02-page-object.visual.spec.ts`](../s03/s03-l02-page-object.visual.spec.ts) | S03 L02 VRT przez Page Object (cel promptów POM Refactor / SOLID Review) |
-| [`../s03/s03-b01-threshold.visual.spec.ts`](../s03/s03-b01-threshold.visual.spec.ts) | S03 B01 threshold per komponent (cel promptów Threshold Recommender / False Positive) |
 | [`../../../.claude/skills/vrt-factory/SKILL.md`](../../../.claude/skills/vrt-factory/SKILL.md) | S03 L03 modelowy skill: **dane** (cel promptów Skill Draft / Trigger Review) |
 | [`../../../.claude/skills/vrt-pom/SKILL.md`](../../../.claude/skills/vrt-pom/SKILL.md) | S03 L03 modelowy skill: **Page Object** (locatory + akcje, zero asercji) |
 | [`../../../.claude/skills/vrt-spec/SKILL.md`](../../../.claude/skills/vrt-spec/SKILL.md) | S03 L03 modelowy skill: **spec** (asercje + screenshot) |

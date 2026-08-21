@@ -2,7 +2,7 @@
 
 ## AI Prompty
 
-**Co łączy te czerwone: agent czyta przebieg przez MCP**
+### Co łączy te czerwone: agent czyta przebieg przez MCP
 
 Uruchamiasz po dwóch biegach, gdy w panelu jest już przebieg z regresją, i po tym, jak sam postawisz tezę na podstawie widgetów. Kolejność ma znaczenie: chodzi o porównanie dwóch niezależnych odpowiedzi, a nie o podpowiedź. Odpowiedź agenta zapisujesz w `solution-<imie>.md` razem z jednym zdaniem o tym, gdzie się z nim nie zgadzasz.
 
@@ -42,7 +42,7 @@ Dwa fragmenty są w tym prompcie najważniejsze. Zdanie o ignorowaniu nazw test�
 
 Zakaz zmieniania etykiet też jest tam celowo. Model chętnie kończy propozycją „mogę to za Ciebie oznaczyć", a to jest dokładnie ta decyzja, która ma zostać po stronie człowieka, bo staje się materiałem treningowym dla klasyfikatora.
 
-**Weryfikacja odpowiedzi agenta, jeśli brzmi zbyt pewnie**
+### Weryfikacja odpowiedzi agenta, jeśli brzmi zbyt pewnie
 
 Pomocniczo, gdy agent podaje przyczynę bez pokazania danych, na których ją oparł.
 
