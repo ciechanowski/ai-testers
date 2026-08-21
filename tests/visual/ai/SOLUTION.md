@@ -183,6 +183,15 @@ rozsądnie na maskach / progach / Page Objectach. Dobry `description` = czasowni
 > **Gdzie AI się myli:** zbyt szeroki `description` (skill odpala się „przy wszystkim") i
 > skill-moloch łamiący SRP (dane + asercje + PO w jednym). Trigger konkretny jak nazwa testu.
 
+---
+
+# S04: Dzień 4 (ground truth)
+
+S04 to momenty **na konfiguracji agenta i na metadanych trackera**, nie na obrazkach. Generatory
+produkują artefakty, które lądują w repo (`AGENTS.md`, `SKILL.md`, sekcja polityki), a prompty review
+sprawdzają je zanim ktokolwiek je zacommituje. Jedno założenie przewija się przez całą sesję: **model
+nie widzi pikseli**, czyta wyłącznie `status`, `diffPercent`, `branchName` i timestampy.
+
 ## S04 L01: Trend Analyzer + Evidence Review
 
 **Trend Analyzer, poprawny kształt wyjścia:** JSON z `trending_up[]`, `chronically_flaky[]`,
