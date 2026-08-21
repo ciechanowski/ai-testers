@@ -58,7 +58,7 @@ Return only this JSON:
 - health_score is 0 to 100 and must follow from the two lists, not from a general impression.
 ```
 
-**Granica:** Trend Analyzer patrzy tylko na metadane (failure rate, timestamp, branch), a nie na piksele, więc nie powie Ci, czy konkretny diff to bug czy zmiana oczekiwana. Od klasyfikacji pojedynczego failu jest AI Triage z bonusu na branchu `bonus-ci-cd`, który dostaje baseline, zrzut i mapę różnic. Traktuj wyjście jako listę hipotez do przejrzenia, nie jako decyzję: `suggested_action: 'remove'` zawsze zatwierdza człowiek, bo model widzi statystykę, a nie kontekst produktu. Do promptu wrzucaj sam zrzut metadanych, bez danych wrażliwych z aplikacji.
+**Granica:** Trend Analyzer patrzy tylko na metadane (failure rate, timestamp, branch), a nie na piksele, więc nie powie Ci, czy konkretny diff to bug czy zmiana oczekiwana. Od klasyfikacji pojedynczego failu jest prompt triage z Dnia 1, który dostaje baseline, zrzut i mapę różnic. Traktuj wyjście jako listę hipotez do przejrzenia, nie jako decyzję: `suggested_action: 'remove'` zawsze zatwierdza człowiek, bo model widzi statystykę, a nie kontekst produktu. Do promptu wrzucaj sam zrzut metadanych, bez danych wrażliwych z aplikacji.
 
 ### Evidence Review of the trend report
 

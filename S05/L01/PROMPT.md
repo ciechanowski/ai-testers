@@ -13,6 +13,6 @@ AI wchodzi w tym dniu dwoma wejściami i oba mają własne lekcje:
 
 ### Czego świadomie nie promptujemy
 
-Auto-Analysis nie ma promptu i nie da się go „poprawić słowami". Jeśli klasyfikuje źle, odpowiedź nie brzmi „napisz lepszy prompt", tylko „popraw etykiety i poczekaj na przetrenowanie". To istotna różnica wobec własnego triage z bonusu `bonus-ci-cd`, gdzie prompt, model, `temperature` i koszt są w całości pod Twoją kontrolą.
+Auto-Analysis nie ma promptu i nie da się go „poprawić słowami". Jeśli klasyfikuje źle, odpowiedź nie brzmi „napisz lepszy prompt", tylko „popraw etykiety i poczekaj na przetrenowanie". To istotna różnica wobec własnego triage z Dnia 1, gdzie prompt, model, `temperature` i koszt są w całości pod Twoją kontrolą.
 
 Ciała promptów w całym kursie są po angielsku (konwencja od Dnia 2), otoczka i omówienie po polsku.

@@ -49,5 +49,6 @@ Return **only** this JSON:
 > **Boundary:** the model sees statistics, not pixels and not your product. It cannot tell you whether
 > a given diff is a bug or an intended redesign, and it will happily invent a cause for a trend that
 > is really one noisy afternoon of CI. For classifying a single failure you need the images, which is
-> the AI Triage bonus on the `bonus-ci-cd` branch. Run this report through the **Evidence Review**
+> what the Day 1 triage prompt does ([`../s01/s01-l01-triage.md`](../s01/s01-l01-triage.md)).
+> Run this report through the **Evidence Review**
 > ([`s04-l01-evidence-review.md`](s04-l01-evidence-review.md)) before you act on it.

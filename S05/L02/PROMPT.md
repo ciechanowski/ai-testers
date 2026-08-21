@@ -36,4 +36,4 @@ proposed_labels: [{ item_id, defect_type, why }], pattern_rule: { name, type, va
 
 ### Czego świadomie nie promptujemy
 
-Auto-Analysis nie ma promptu i nie da się go „poprawić słowami". Jeśli klasyfikuje źle, odpowiedź nie brzmi „napisz lepszy prompt", tylko „popraw etykiety i poczekaj na przetrenowanie". To istotna różnica wobec własnego triage z bonusu `bonus-ci-cd`, gdzie prompt, model, `temperature` i koszt są w całości pod Twoją kontrolą, i dobry moment, żeby nazwać ten podział wprost: czasem AI jest zdolnością wbudowaną w narzędzie, a czasem instrukcją, którą piszesz sam.
+Auto-Analysis nie ma promptu i nie da się go „poprawić słowami". Jeśli klasyfikuje źle, odpowiedź nie brzmi „napisz lepszy prompt", tylko „popraw etykiety i poczekaj na przetrenowanie". To istotna różnica wobec własnego triage z Dnia 1, gdzie prompt, model, `temperature` i koszt są w całości pod Twoją kontrolą, i dobry moment, żeby nazwać ten podział wprost: czasem AI jest zdolnością wbudowaną w narzędzie, a czasem instrukcją, którą piszesz sam.

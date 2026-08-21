@@ -45,7 +45,8 @@ moment ma parę: jeden prompt **generuje artefakt**, drugi robi jego **review**.
 
 Uwaga na jedną rzecz, która przewija się przez całą sesję: model nie widzi pikseli. Trend Analyzer
 czyta wyłącznie `status`, `diffPercent` i `branchName`, więc nie powie Ci, czy różnica to bug czy
-zmiana zamierzona. Od klasyfikacji pojedynczego failu jest AI Triage z bonusu (`bonus-ci-cd`).
+zmiana zamierzona. Od klasyfikacji pojedynczego failu jest prompt triage z Dnia 1
+([`s01/s01-l01-triage.md`](s01/s01-l01-triage.md)), bo ten dostaje obrazki.
 
 | Lekcja | Moment AI | Wejście | Wyjście |
 |--------|-----------|---------|---------|
