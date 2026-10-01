@@ -14,7 +14,7 @@ test.describe('Element screenshots', () => {
 test.describe('Full page screenshots', () => {
   test('login page — form-centric, full page works well', async ({ page }) => {
     await page.goto('/login');
-    await expect(page.getByRole('form', { name: /sign in|zaloguj|anmeld/i })).toBeVisible();
+    await expect(page.getByTestId('login-form')).toBeVisible();
     await expect(page).toHaveScreenshot('login-full.png', {
       fullPage: true,
     });
